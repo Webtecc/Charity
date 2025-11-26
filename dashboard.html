@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Dashboard</title>
+    <style>
+        /* Full page background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Dashboard container */
+        .dashboard {
+            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .dashboard h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Section styles */
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .dashboard {
+                padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Charity Dashboard</h1>
+        <!-- Charity Manual Section -->
+        <div class="section">
+            <h2>Charity Manual</h2>
+            <a href="charity_manual.pdf" class="btn" download>Download</a>
+            <a href="charity_manual.pdf" class="btn" target="_blank">View</a>
+        </div>
+
+        <!-- Charity Ambassadors Section -->
+        <div class="section">
+            <h2>Charity Ambassadors</h2>
+            <a href="charity_ambassadors.pdf" class="btn" target="_blank">View</a>
+        </div>
+
+        <!-- Charity By-Laws Section -->
+        <div class="section">
+            <h2>Charity By-Laws</h2>
+            <a href="charity_bylaws.pdf" class="btn" target="_blank">View</a>
+        </div>
+    </div>
+</body>
+</html>

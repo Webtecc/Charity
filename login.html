@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charity&mdash;Login Page</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", Arial, sans-serif;
+        height: 100vh;
+        background: url('images/bg_7.jpg') center/cover no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    body::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        z-index: 1;
+    }
+
+    .login-box {
+        width: 380px;
+        background: rgba(255, 255, 255, 0.18);
+        padding: 40px;
+        border-radius: 18px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(255,255,255,0.3);
+        border: 1px solid rgba(255,255,255,0.4);
+        z-index: 2;
+        text-align: center;
+        animation: fadeIn 1.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-box h2 { margin-bottom: 10px; font-size: 28px; font-weight: 600; color: white; text-shadow: 0 0 3px black; }
+    .login-box p { margin-bottom: 20px; color: #eee; font-size: 15px; }
+    .login-box a { text-decoration: none; color: #f1c40f; display: block; margin-bottom: 15px; font-size: 15px; }
+    .form-control { width: 100%; padding: 14px; margin: 12px 0; outline: none; font-size: 15px; border: 1px solid #fff; border-radius: 8px; background: rgba(255,255,255,0.3); color: #fff; }
+    .form-control::placeholder { color: #eee; }
+    .password-wrapper { position: relative; }
+    .toggle-password { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: white; font-size: 18px; }
+    .login-btn { width: 100%; padding: 15px; border: none; background: linear-gradient(90deg, #f1c40f, #ffdd55); color: #000; font-size: 18px; border-radius: 10px; cursor: pointer; margin-top: 10px; transition: 0.3s; font-weight: 600; }
+    .login-btn:hover { transform: scale(1.03); background: linear-gradient(90deg, #ffdd55, #f1c40f); }
+    .links { margin-top: 15px; text-align: center; }
+    .links a { color: #f1c40f; font-size: 14px; }
+    @media (max-width: 480px) { .login-box { width: 90%; padding: 30px; } .login-btn { font-size: 16px; } }
+
+    /* Toast Notification Styles */
+    .toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0,0,0,0.85);
+        color: #fff;
+        padding: 15px 25px;
+        border-radius: 8px;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.5s ease;
+        z-index: 9999;
+    }
+
+    .toast.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+</style>
+</head>
+<body>
+
+<div class="login-box">
+
+    <a href="index.html">Back to Homepage</a>
+
+    <h2>Charity Login Page</h2>
+    <p>Enter your login Details</p>
+
+    <form id="loginForm">
+
+        <label style="float:left; color:white;">Username</label>
+        <input type="text" class="form-control" name="state_code" placeholder="Enter Username" required>
+
+        <label style="float:left; color:white;">Password</label>
+        <div class="password-wrapper">
+            <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <div class="links">
+        <a href="#" id="forgotPassword">Forgot your password?</a>
+    </div>
+
+</div>
+
+<!-- Toast container -->
+<div id="toast" class="toast"></div>
+
+<script>
+function togglePassword() {
+    var input = document.getElementById("password");
+    input.type = input.type === "password" ? "text" : "password";
+}
+
+// Function to show toast message
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    // Hide after 5 seconds
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 5000);
+}
+
+// Login pop-up
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Prevent default form submit
+    // You can add real login validation here
+    showToast("Incorrect username or password!");
+});
+
+// Forgot password pop-up
+document.getElementById("forgotPassword").addEventListener("click", function(e) {
+    e.preventDefault();
+    showToast("Contact your admin for password reset.");
+});
+</script>
+
+</body>
+</html>

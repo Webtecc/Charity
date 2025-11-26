@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Charity&mdash;Donation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,500|Dosis:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body></body>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">CHARITY</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="causes.html" class="nav-link">Our Causes</a></li>
+          <li class="nav-item"><a href="social-events.html" class="nav-link">Social Events</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="donate.html" class="nav-link">Donate</a></li>
+          <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END nav -->
+  <div class="block-31" style="position: relative;">
+    <div class="owl-carousel loop-block-31 ">
+      <div class="block-30 block-30-sm item" style="background-image: url('images/big.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center">
+              <h2 class="heading">Better To Give Than To Recieve</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Right Section with Form -->
+<div class="right-section">
+  <h2>Make a Donation Now</h2>
+  <h3>Fill in to Continue</h3>
+
+  <form action="PHP/insert.php" method="post" id="applicationForm" class="application-form">
+    
+    <!-- Currency Type -->
+    <div class="form-group">
+      <label for="currency">Currency Type</label>
+      <select id="currency" name="currency" class="form-control" required>
+        <option value="NGN" selected>Nigerian Naira (₦)</option>
+        <option value="USD">US Dollar ($)</option>
+        <option value="EUR">Euro (€)</option>
+        <option value="GBP">British Pound (£)</option>
+      </select>
+    </div>
+    
+    <!-- Amount -->
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <div style="position: relative;">
+        <span id="currencySymbol" style="
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-weight: bold;">
+          ₦
+        </span>
+        <input type="number" id="amount" name="amount" class="form-control" 
+               style="padding-left: 30px;" required>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Continue</button>
+  </form>
+
+  <!-- Donation Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <h3>Donation Account Details</h3>
+      <p id="welcomeMessage"></p>
+      <p id="registrationNumber"></p>
+      <button class="copy-btn" onclick="copyServiceNumber()">Copy Account Number</button>
+      <p id="copyMessage">Account number copied to clipboard!</p>
+      <p>Thank You For Your Donation</p>
+      <button class="close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Internal Styles -->
+<style>
+/* Basic layout */
+.right-section {
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #f7ca44;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+.submit-btn:hover {
+  background-color: #e0b12d;
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+}
+
+.copy-btn, .close-btn {
+  padding: 8px 15px;
+  margin: 8px 5px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.copy-btn {
+  background-color: hsl(120, 17%, 2%);
+  color: #fff;
+}
+.copy-btn:hover {
+  background-color: #f7ca44;
+}
+
+.close-btn {
+  background-color: black;
+  color: #fff;
+}
+.close-btn:hover {
+  background-color: #f7ca44;
+}
+
+#copyMessage {
+  display: none;
+  color: #f7ca44;
+  margin-top: 8px;
+  font-weight: bold;
+}
+</style>
+
+<!-- JS -->
+<script>
+// Update currency symbol
+document.getElementById("currency").addEventListener("change", function () {
+  const symbolSpan = document.getElementById("currencySymbol");
+  const symbols = { NGN: "₦", USD: "$", EUR: "€", GBP: "£" };
+  symbolSpan.textContent = symbols[this.value] || "";
+});
+
+// Form submit - open modal
+document.getElementById("applicationForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  
+  const amountField = document.getElementById("amount");
+  const symbol = document.getElementById("currencySymbol").textContent;
+  let amount = amountField.value;
+  
+  if(amount === "" || amount <=0){
+    alert("Please enter a valid amount");
+    return;
+  }
+  
+  const formattedAmount = Number(amount).toLocaleString();
+  document.getElementById("welcomeMessage").innerHTML = 
+    `You are about to donate <strong>${symbol}${formattedAmount}</strong> to charity.<br><br>Account Details:`;
+  
+  const regNumber = "PalmPay - 7062449138";
+  document.getElementById("registrationNumber").textContent = `Account: ${regNumber}`;
+  sessionStorage.setItem("serviceNumber", regNumber);
+  
+  document.getElementById("successModal").style.display = "flex";
+});
+
+// Copy account number
+function copyServiceNumber(){
+  const account = document.getElementById("registrationNumber").textContent.replace("Account Details: ", "");
+  navigator.clipboard.writeText(account);
+  
+  const msg = document.getElementById("copyMessage");
+  msg.style.display = "block";
+  setTimeout(()=> msg.style.display="none", 2000);
+}
+
+// Close modal
+function closeModal(){
+  document.getElementById("successModal").style.display = "none";
+}
+document.querySelector("#successModal .close-btn").addEventListener("click", closeModal);
+</script>
+
+   <footer class="footer">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-6 col-lg-4">
+          <h3 class="heading-section">About Us</h3>
+          <p class="lead">Charity is a unit of the National Youth Service Corps devoted to promoting selfless service, compassion, and sustainable development through community-oriented activities.
+
+          </p>
+          <p><a href="#" class="link-underline">Read  More</a></p>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h3 class="heading-section">Recent Blog</h3>
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img src="images/img_1.jpg" alt="" class="img-fluid">
+            </figure>
+            <div class="text">
+              <h3 class="heading"><a href="#">Together we can</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 29, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img src="images/img_2.jpg" alt="" class="img-fluid">
+            </figure>
+            <div class="text">
+              <h3 class="heading"><a href="#">Life Is Short So Be Kind</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 29, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block-21 d-flex mb-4">
+            <figure class="mr-3">
+              <img src="images/img_4.jpg" alt="" class="img-fluid">
+            </figure>
+            <div class="text">
+              <h3 class="heading"><a href="#">Let's make a change together</a></h3>
+              <div class="meta">
+                <div><a href="#"><span class="icon-calendar"></span> July 29, 2018</a></div>
+                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="block-23">
+            <h3 class="heading-section">Get Connected</h3>
+              <ul>
+                <li><span class="icon icon-map-marker"></span><span class="text">Federal Secretariat, Kawo, Kaduna State, Nigeria.
+                </span></li>
+                <li><a href="#"><span class="icon icon-phone"></span><span class="text">08133968770<br>07062491386</span></a></li>
+                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@charity.com</span></a></li>
+              </ul>
+            </div>
+        </div>
+        
+        
+      </div>
+      <div class="row pt-5">
+        <div class="col-md-12 text-center">
+          
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Developed By <i class="ion-ios-heart text-danger" aria-hidden="true"></i> by <a href="https://webtecc.github.io/StudentsBridge/" target="_blank" >StudentsBridge</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+
+  <script src="js/jquery.fancybox.min.js"></script>
+  
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
